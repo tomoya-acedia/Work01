@@ -1,12 +1,16 @@
 ﻿using System.Windows.Forms;
 
-class Sample
+//Formクラスを継承したSampleクラス
+class Sample:Form 
 {
-    static Form form;
-
     static void Main()
     {
-        form = new Form();
-        Application.Run(form);
+        Application.Run(new Sample());
+    }
+
+    //デフォルトコンストラクタ(引数のないコンストラクタ)
+    public Sample()
+    {
+        
     }
 }
