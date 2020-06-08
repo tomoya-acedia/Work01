@@ -21,7 +21,8 @@ class Sample:Form
         //}
         for (int i = 0; i < scores.Length; i++)
         {
-            scores[i] = 10 * (i + 1); //10 * i + 10;
+            //scores[i] = 10 * (i + 1); //10,20,30,40,50
+            scores[i] = 20 * (i + 1);   //20,40,60,80,100
             Console.WriteLine(scores[i]);
         }
     }
