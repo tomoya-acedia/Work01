@@ -12,18 +12,34 @@ class Sample:Form
     //デフォルトコンストラクタ(引数のないコンストラクタ)
     public Sample()
     {
-        //var socres = new int[] { 65, 54, 78, 96, 81 };
-        int[] scores = new int[5];
-        //int [] scores = { 65, 54, 78, 96, 81 };
-        //for (int i = 0; i < socres.Length; i++)
-        //{
-        //    Console.WriteLine(socres[i]);
-        //}
+        var scores = new int[5];
+
         for (int i = 0; i < scores.Length; i++)
         {
-            //scores[i] = 10 * (i + 1); //10,20,30,40,50
-            scores[i] = 20 * (i + 1);   //20,40,60,80,100
-            Console.WriteLine(scores[i]);
+            //整数値の取り込み
+            Console.Write("scores[" + i + "]＝");
+            int num = int.Parse(Console.ReadLine());
+            Console.WriteLine("");
+            scores[i] = num;
+            
+            Sum(scores[i], i);
         }
+    }
+
+    int SumMax = 0;
+    public void Sum(int a,int b)
+    {
+        SumMax += a;
+        //5回入力したら表示
+        if (b > 3)
+        {
+            Console.WriteLine("入力された合計は" + SumMax + "です。");
+        }
+
+        //for (int i = 0; i < a; i++)
+        //{
+        //    Console.Write("*");
+        //}
+        //Console.WriteLine("");
     }
 }
