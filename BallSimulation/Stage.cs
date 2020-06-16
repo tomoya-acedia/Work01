@@ -1,12 +1,17 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 class Stage : Form
 {
     
     //ボールオブジェクト表示用
-    private PictureBox pictureBoxBall = new PictureBox();
-    private Ball ball;
+    //private PictureBox pictureBoxBall = new PictureBox();
+    //private Ball ball;
+
+    //ボールオブジェクトのリスト化
+    private List<PictureBox> pictureBoxBalls = new List<PictureBox>();
+    private List<Ball> balls = new List<Ball>();
 
     //タイマー
     private Timer timer = new Timer();
@@ -26,7 +31,7 @@ class Stage : Form
         Text = "ボールシミュレーション";
 
         //ball = new Ball(); //ボールオブジェクトの生成
-        pictureBoxBall.Parent = this;
+        //pictureBoxBall.Parent = this;
         
         timer.Interval = 10;       //ms
         timer.Tick += Timer_Tick;  //時間経過で呼ぶメソッドを登録
@@ -35,7 +40,7 @@ class Stage : Form
         this.MouseClick += Stage_MouseClick;
     }
 
-
+    
     //マウスクリック時のイベントハンドラ
     private void Stage_MouseClick(object sender,MouseEventArgs e)
     {
@@ -43,17 +48,23 @@ class Stage : Form
         if (e.Button == MouseButtons.Left)
         {
             path = @"images\soccer_ball.png";
+            Ball.Count++;
         }
 
         else if(e.Button == MouseButtons.Right)
         {
             path=@"images\tennis_ball.png";
+            Ball.Count++;
         }
         else
         {
             return;
         }
-        ball = new Ball(e.X - 50, e.Y - 50,path);
+        Ball ball = new Ball(e.X - 50, e.Y - 50,path);
+        balls.Add(ball);
+
+        PictureBox pictureBoxBall = new PictureBox();
+
 
         pictureBoxBall.Width = 100;//画像の幅
         pictureBoxBall.Height = 100;//画像の高さ
@@ -61,16 +72,23 @@ class Stage : Form
         pictureBoxBall.Top = (int)ball.YPos;
         pictureBoxBall.SizeMode = PictureBoxSizeMode.StretchImage;
         pictureBoxBall.Image = ball.Img;//画像
+        pictureBoxBall.Parent = this;
 
-        timer.Start();             //タイマースタート 
+        pictureBoxBalls.Add(pictureBoxBall);
+
+        timer.Start();       //タイマースタート 
+
+        this.Text = "ボールシミュレーション" + Ball.Count;
     }
 
     //指定した時間が経過すると呼ばれるメソッド
-    private void Timer_Tick(object sender, System.EventArgs e) 
+    private void Timer_Tick(object sender, System.EventArgs e)
     {
-        ball.Move();
-
-        pictureBoxBall.Left = (int)ball.XPos;
-        pictureBoxBall.Top = (int)ball.YPos;
+        for (int i = 0; i < balls.Count; i++)
+        {
+            balls[i].Move();
+            pictureBoxBalls[i].Left = (int)balls[i].XPos;
+            pictureBoxBalls[i].Top = (int)balls[i].YPos;
+        }
     }
 }

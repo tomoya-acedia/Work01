@@ -4,6 +4,10 @@ using System;
 //ボールクラス
 class Ball
 {
+    //静的プロパティ
+    public static int Count;//オブジェクトの個数をカウント(初期化しなくても0が格納されている)
+
+
     //プロパティ
     public double XPos { get; set; }    //X座標
     public double YPos { get; set; }    //Y座標
@@ -37,7 +41,6 @@ class Ball
         moveX = rnd.Next(0, 20) - 10; 
         moveY = rnd.Next(0, 20) - 10;
     }
-
 
     //移動
     public void Move() 
