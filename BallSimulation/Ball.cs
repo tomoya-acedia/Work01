@@ -63,6 +63,3 @@ class Ball
         Console.WriteLine("XPos = {0},YPos = {1}", (int)XPos, (int)YPos);
     }
 }
-
-
-
