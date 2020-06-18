@@ -25,14 +25,14 @@ namespace DistanceConverter
             }
         }
 
-        static FeetConverter feetConverter = new FeetConverter();
+        //static FeetConverter feetConverter = new FeetConverter();
 
         //フィートからメートルへの対応表を出力
         static void PrintFeetToMeter(int start,int stop)
         {
             for (int feet = start; feet <= stop; feet++)
             {
-                Console.WriteLine("{0}ft = {1:0.0000}", feet, feetConverter.ToMeter(feet));
+                Console.WriteLine("{0}ft = {1:0.0000}", feet, FeetConverter.ToMeter(feet));
             }
         }
 
@@ -41,7 +41,7 @@ namespace DistanceConverter
         {
             for (int meter = start; meter <= stop; meter++)
             {
-                Console.WriteLine("{0}ft = {1:0.0000}", meter, feetConverter.FromMeter(meter));
+                Console.WriteLine("{0}ft = {1:0.0000}", meter, FeetConverter.FromMeter(meter));
             }
         }
     }
