@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListSample", "ListSample\Li
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistanceConverter", "DistanceConverter\DistanceConverter.csproj", "{88CF5A6C-78E9-429D-A39F-4356C48A6221}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesManagement", "SalesManagement\SalesManagement.csproj", "{D442DFF3-8D1A-4208-B157-D898A8A74963}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{88CF5A6C-78E9-429D-A39F-4356C48A6221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88CF5A6C-78E9-429D-A39F-4356C48A6221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88CF5A6C-78E9-429D-A39F-4356C48A6221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D442DFF3-8D1A-4208-B157-D898A8A74963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D442DFF3-8D1A-4208-B157-D898A8A74963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D442DFF3-8D1A-4208-B157-D898A8A74963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D442DFF3-8D1A-4208-B157-D898A8A74963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
