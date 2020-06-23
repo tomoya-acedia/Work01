@@ -12,111 +12,31 @@ namespace SalesManagement
         //svmで↓が出る(ショートカットキー)
         static void Main(string[] args)
         {
-            //合計
-            int total = 0;
-            
-            //各店舗
-            int total_sinzyuku = 0;
-            int total_asakusa = 0;
-            int total_marunouti = 0;
-            int total_yokohama = 0;
-
-            //カテゴリー別
-            int kasutera = 0;
-            int kasi = 0;
-            int manzyu = 0;
-            int youkan = 0;
+            Dictionary<string, int> stores = new Dictionary<string, int>();
 
             SalesCounter sales = new SalesCounter(ReadSales("Sales.csv"));
 
-            //各店舗と合計金額の表示
             foreach (var item in sales._sales)
             {
-                #region 店舗合計
-                if (item.ShopName.Equals("新宿店"))
+                if(stores.ContainsKey(item.ShopName))
                 {
-                    total_sinzyuku += item.Amount;
-                }
+                    //キー(店舗名)が存在する場合
+                    stores[item.ShopName] += item.Amount;
 
-                if (item.ShopName.Equals("浅草店"))
+                }
+                else
                 {
-                    total_asakusa += item.Amount;
-                }
+                    //キー(店舗名)が存在しない(連想配列追加)
+                    stores[item.ShopName] = item.Amount;
 
-                if (item.ShopName.Equals("丸の内店"))
-                {
-                    total_marunouti += item.Amount;
                 }
-
-                if (item.ShopName.Equals("横浜店"))
-                {
-                    total_yokohama += item.Amount;
-                }
-                #endregion
-
-                #region カテゴリー
-                if (item.ProductCategory.Equals("カステラ"))
-                {
-                    kasutera += item.Amount; 
-                }
-
-                if (item.ProductCategory.Equals("餅菓子"))
-                {
-                    kasi += item.Amount;
-                }
-
-                if (item.ProductCategory.Equals("まんじゅう"))
-                {
-                    manzyu += item.Amount;
-                }
-
-                if (item.ProductCategory.Equals("羊羹"))
-                {
-                    youkan += item.Amount;
-                }
-
-                #endregion
-                //全体の合計金額
-                total += item.Amount;
             }
 
-            #region 店舗合計(表示)
-            //新宿店の合計金額
-            Console.WriteLine("新宿店:{0}円", total_sinzyuku);
-
-            //浅草の合計金額
-            Console.WriteLine("浅草店:{0}円", total_asakusa);
-
-            //丸の内の合計金額
-            Console.WriteLine("丸の内店:{0}", total_marunouti);
-
-            //横浜の合計金額
-            Console.WriteLine("横浜店:{0}円", total_yokohama);
-
-            #endregion
-
-            Console.WriteLine("");
-            
-            #region カテゴリー(表示)
-            //カステラ
-            Console.WriteLine("カステラ:{0}円", kasutera);
-
-            //餅菓子
-            Console.WriteLine("餅菓子:{0}円", kasi);
-
-            //まんじゅう
-            Console.WriteLine("まんじゅう:{0}円", manzyu);
-
-            //羊羹
-            Console.WriteLine("羊羹:{0}円", youkan);
-
-            #endregion
-
-            Console.WriteLine("");
-
-            //↓ショートカットキー：cw
-            //全体
-            Console.WriteLine("全体の売り上げ:{0}円", total);
+            //出力
+            foreach (var item in stores)
+            {
+                Console.WriteLine("{0}の売上合計：{1}", item.Key, item.Value);
+            }
         }
    
         //売上データを読み込み、Saleオブジェクトのリストを返す
