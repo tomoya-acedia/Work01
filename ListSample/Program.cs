@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//リストの書き方
 namespace ListSample
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             //List<int> number = new List<int>()←var型を使わない場合
             //var numbers = new List<int>();
             //numbers.Add(3);
