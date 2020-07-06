@@ -23,5 +23,6 @@ namespace ListCollectionSample
         //画像
         [System.ComponentModel.DisplayName("画像")]
         public Image carPic { get; set; }
+
     }
 }
