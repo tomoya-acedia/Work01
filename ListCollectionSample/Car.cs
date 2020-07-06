@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ListCollectionSample
 {
+    //↓これを書かないとシリアル化できない
+    [Serializable]
     class Car
     {
         //車名
